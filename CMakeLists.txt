@@ -14,6 +14,7 @@ include(cmake/Sanitizers.cmake)
 include(cmake/StaticAnalyzers.cmake)
 include(cmake/Doxygen.cmake)
 include(cmake/PrecompileHeaders.cmake)
+include(cmake/Tests.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
@@ -26,34 +27,18 @@ set_project_warnings(project_warnings)
 
 enable_ipo()
 enable_pch()
+option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 
 enable_doxygen()
 enable_ccache()
 enable_sanitizers(project_options)
 enable_static_analyzers()
 
-option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
-
-option(ENABLE_TESTING "Enable Test Builds" ON)
-option(ENABLE_FUZZING "Enable Fuzzing Builds" OFF)
+enable_tests()
 
 add_subdirectory(dependencies)
-
-if(ENABLE_TESTING)
-        enable_testing()
-        message(
-                "Building Tests. Be sure to check out test/constexpr_tests for constexpr testing"
-        )
-        add_subdirectory(test)
-endif()
-
-if(ENABLE_FUZZING)
-        message(
-                "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html"
-        )
-        add_subdirectory(fuzz_test)
-endif()
-
+add_subdirectory(test)
+add_subdirectory(fuzz_test)
 add_subdirectory(src)
 
 option(ENABLE_UNITY "Enable Unity builds of projects" OFF)
