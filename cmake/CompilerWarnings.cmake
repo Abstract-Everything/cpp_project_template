@@ -41,7 +41,7 @@ function(set_project_warnings project_name)
             /w14928 # illegal copy-initialization; more than one user-defined
                     # conversion has been implicitly applied
             /permissive- # standards conformance mode for MSVC compiler.
-        )
+            $<$<BOOL:${WARNINGS_AS_ERRORS}>:/WX>)
 
         set(CLANG_WARNINGS
             -Wall
@@ -57,12 +57,8 @@ function(set_project_warnings project_name)
             -Wsign-conversion
             -Wnull-dereference
             -Wdouble-promotion
-            -Wformat=2)
-
-        if(WARNINGS_AS_ERRORS)
-                set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
-                set(MSVC_WARNINGS ${MSVC_WARNINGS} /WX)
-        endif()
+            -Wformat=2
+            $<$<BOOL:${WARNINGS_AS_ERRORS}>:-Werror>)
 
         set(GCC_WARNINGS
             ${CLANG_WARNINGS}
@@ -72,19 +68,21 @@ function(set_project_warnings project_name)
             -Wlogical-op
             -Wuseless-cast)
 
-        if(MSVC)
-                set(PROJECT_WARNINGS ${MSVC_WARNINGS})
-        elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-                set(PROJECT_WARNINGS ${CLANG_WARNINGS})
-        elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-                set(PROJECT_WARNINGS ${GCC_WARNINGS})
-        else()
+        if(NOT
+           (${CPP_PROJECT_TEMPLATE_USING_MSVC}
+            OR ${CPP_PROJECT_TEMPLATE_USING_CLANG}
+            OR ${CPP_PROJECT_TEMPLATE_USING_GCC}))
                 message(
                         AUTHOR_WARNING
                                 "No compiler warnings set for '${CMAKE_CXX_COMPILER_ID}' compiler."
                 )
         endif()
 
-        target_compile_options(${project_name} INTERFACE ${PROJECT_WARNINGS})
-
+        target_compile_options(
+                ${project_name}
+                INTERFACE
+                        $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_MSVC}>:${MSVC_WARNINGS}>
+                        $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_CLANG}>:${CLANG_WARNINGS}>
+                        $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_GCC}>:${GCC_WARNINGS}>
+        )
 endfunction()
