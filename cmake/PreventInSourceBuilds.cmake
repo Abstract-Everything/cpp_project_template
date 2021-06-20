@@ -4,11 +4,11 @@ get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
 
 # disallow in-source builds
 if("${srcdir}" STREQUAL "${bindir}")
-	message("#####################################################")
-	message("Warning: in-source builds are disabled")
-	message(
-		"Please create a separate build directory and run cmake from there"
-	)
-	message("#####################################################")
-	message(FATAL_ERROR "Quitting configuration")
+        message("#####################################################")
+        message("Warning: in-source builds are disabled")
+        message(
+                "Please create a separate build directory and run cmake from there"
+        )
+        message("#####################################################")
+        message(FATAL_ERROR "Quitting configuration")
 endif()

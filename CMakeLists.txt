@@ -15,6 +15,7 @@ include(cmake/StaticAnalyzers.cmake)
 include(cmake/Doxygen.cmake)
 include(cmake/PrecompileHeaders.cmake)
 include(cmake/Tests.cmake)
+include(cmake/UnityBuild.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
@@ -40,9 +41,3 @@ add_subdirectory(dependencies)
 add_subdirectory(test)
 add_subdirectory(fuzz_test)
 add_subdirectory(src)
-
-option(ENABLE_UNITY "Enable Unity builds of projects" OFF)
-if(ENABLE_UNITY)
-        # Add for any project you want to apply unity builds for
-        set_target_properties(intro PROPERTIES UNITY_BUILD ON)
-endif()

@@ -1,8 +1,10 @@
 if(NOT ENABLE_TESTING)
-	return()
+        return()
 endif()
 
-message("Building Tests. Be sure to check out test/constexpr_tests for constexpr testing")
+message(
+        "Building Tests. Be sure to check out test/constexpr_tests for constexpr testing"
+)
 
 find_package(Catch2 REQUIRED)
 include(Catch)

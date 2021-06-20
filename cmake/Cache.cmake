@@ -1,24 +1,27 @@
 function(enable_ccache)
-	set(CACHE_OPTION
-	    "ccache"
-	    CACHE STRING "Compiler cache to be used")
-	set_property(
-		CACHE CACHE_OPTION
-		PROPERTY STRINGS
-			 "off"
-			 "ccache"
-			 "sccache")
+        set(CACHE_OPTION
+            "ccache"
+            CACHE STRING "Compiler cache to be used")
 
-	if(CACHE_OPTION STREQUAL "off")
-		return()
-	endif()
+        set_property(
+                CACHE CACHE_OPTION
+                PROPERTY STRINGS
+                         "off"
+                         "ccache"
+                         "sccache")
 
-	find_program(CACHE_BINARY ${CACHE_OPTION})
-	if(NOT CACHE_BINARY)
-		message(FATAL_ERROR "${CACHE_OPTION} is enabled but was not found")
-		return()
-	endif()
+        if(CACHE_OPTION STREQUAL "off")
+                return()
+        endif()
 
-	message(STATUS "${CACHE_OPTION} found and enabled")
-	set(CMAKE_CXX_COMPILER_LAUNCHER ${CACHE_BINARY})
+        find_program(CACHE_BINARY ${CACHE_OPTION})
+        if(NOT CACHE_BINARY)
+                message(
+                        FATAL_ERROR
+                                "${CACHE_OPTION} is enabled but was not found")
+                return()
+        endif()
+
+        message(STATUS "${CACHE_OPTION} found and enabled")
+        set(CMAKE_CXX_COMPILER_LAUNCHER ${CACHE_BINARY})
 endfunction()
