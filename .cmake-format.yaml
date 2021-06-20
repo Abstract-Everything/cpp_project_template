@@ -9,6 +9,7 @@ additional_commands:
                         INDEX: 1
                         COMMAND: 1
                         VERIFY_SSL: 1
+
         conan_cmake_run:
                 flags:
                         [
@@ -45,6 +46,21 @@ additional_commands:
                         CONFIGURATION_TYPES: '+'
                         PROFILE_BUILD: '+'
                         BUILD_REQUIRES: '+'
+
+        conan_cmake_configure:
+                kwargs:
+                        REQUIRES: '+'
+                        BUILD_REQUIRES: '+'
+                        GENERATORS: '+'
+                        OPTIONS: '+'
+                        IMPORTS: '+'
+
+        conan_cmake_install:
+                kwargs:
+                        PATH_OR_REFERENCE: 1
+                        BUILD: '+'
+                        REMOTE: 1
+                        SETTINGS: '+'
 
         catch_discover_tests:
                 kwargs:
