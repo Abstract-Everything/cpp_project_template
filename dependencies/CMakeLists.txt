@@ -30,6 +30,7 @@ endif()
 
 conan_cmake_configure(
         REQUIRES ${CONAN_EXTRA_REQUIRES}
+                 gtest/1.11.0
                  catch2/2.13.3
                  docopt.cpp/0.6.2
                  fmt/6.2.0

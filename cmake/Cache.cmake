@@ -18,7 +18,8 @@ function(enable_ccache)
         if(NOT CACHE_BINARY)
                 message(
                         FATAL_ERROR
-                                "${CPP_TMPL_COMPILE_CACHE} is enabled but was not found")
+                                "${CPP_TMPL_COMPILE_CACHE} is enabled but was not found"
+                )
                 return()
         endif()
 

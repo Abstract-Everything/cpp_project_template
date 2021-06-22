@@ -1,7 +1,19 @@
 macro(enable_tests)
-        option(CPP_TMPL_TESTING "Enable Test Builds" OFF)
+        set(CPP_TMPL_TESTING
+            "off"
+            CACHE STRING "Testing framework to use")
 
-        if(${CPP_TMPL_TESTING})
+        set_property(
+                CACHE CPP_TMPL_TESTING
+                PROPERTY STRINGS
+                         "off"
+                         "gtest"
+                         "catch2")
+
+        if(NOT
+           ${CPP_TMPL_TESTING}
+           STREQUAL
+           "off")
                 enable_testing()
         endif()
 

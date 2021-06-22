@@ -1,4 +1,7 @@
-if(NOT ${CPP_TMPL_TESTING})
+if(NOT
+   ${CPP_TMPL_TESTING}
+   STREQUAL
+   "catch2")
         return()
 endif()
 
