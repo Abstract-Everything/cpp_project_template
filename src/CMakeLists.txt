@@ -3,13 +3,6 @@ option(CPP_STARTER_USE_FLTK "Enable compilation of FLTK sample" OFF)
 option(CPP_STARTER_USE_GTKMM "Enable compilation of GTKMM sample" OFF)
 option(CPP_STARTER_USE_IMGUI "Enable compilation of ImGui sample" OFF)
 option(CPP_STARTER_USE_NANA "Enable compilation of Nana GUI sample" OFF)
-option(CPP_STARTER_USE_SDL "Enable compilation of SDL sample" OFF)
-
-# sdl
-if(CPP_STARTER_USE_SDL)
-        message("Using SDL2")
-        add_subdirectory(sdl)
-endif()
 
 # qt
 if(CPP_STARTER_USE_QT)

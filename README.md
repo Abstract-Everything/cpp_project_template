@@ -232,7 +232,6 @@ If you run into difficulty using them, please refer to their documentation,
 linked here:
 
 - [NANA](http://nanapro.org/en-us/documentation/)
-- [SDL](http://wiki.libsdl.org/FrontPage)
 - [IMGUI](https://github.com/ocornut/imgui/tree/master/docs):
   This framework depends on SFML, and if you are using Linux, you may need
   to install several of SFML's dependencies using your package manager. See

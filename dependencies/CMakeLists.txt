@@ -28,12 +28,6 @@ if(CPP_STARTER_USE_IMGUI)
         # libalsa:disable_python=True)
 endif()
 
-if(CPP_STARTER_USE_SDL)
-        set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-                                 sdl2/2.0.10@bincrafters/stable)
-        # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sdl2:wayland=True)
-endif()
-
 conan_cmake_configure(
         REQUIRES ${CONAN_EXTRA_REQUIRES}
                  catch2/2.13.3
