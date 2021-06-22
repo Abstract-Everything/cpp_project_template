@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
-# Set the project name to your project name, my project isn't very descriptive
-project(myproject CXX)
+project(
+        c_plus_plus_template_project
+        VERSION 0.0.0.1
+        DESCRIPTION "A template for C++ projects to get started quickly"
+        LANGUAGES CXX)
 
 include(cmake/Constants.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
