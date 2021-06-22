@@ -1,7 +1,7 @@
 function(enable_pch)
         # Very basic PCH example
-        option(ENABLE_PCH "Enable Precompiled Headers" OFF)
-        if(ENABLE_PCH)
+        option(CPP_TMPL_COMPILE_PCH "Enable Precompiled Headers" OFF)
+        if(${CPP_TMPL_COMPILE_PCH})
                 # This sets a global PCH parameter, each project will build its
                 # own PCH, which is a good idea if any #define's change
                 #

@@ -1,10 +1,12 @@
 function(enable_static_analyzers)
-        option(ENABLE_CPPCHECK "Enable static analysis with cppcheck" OFF)
-        option(ENABLE_CLANG_TIDY "Enable static analysis with clang-tidy" OFF)
-        option(ENABLE_INCLUDE_WHAT_YOU_USE
+        option(CPP_TMPL_ANALYZE_CPPCHECK "Enable static analysis with cppcheck"
+               OFF)
+        option(CPP_TMPL_ANALYZE_CLANG_TIDY
+               "Enable static analysis with clang-tidy" OFF)
+        option(CPP_TMPL_COMPILE_IWYU
                "Enable static analysis with include-what-you-use" OFF)
 
-        if(ENABLE_CPPCHECK)
+        if(${CPP_TMPL_ANALYZE_CPPCHECK})
                 find_program(CPPCHECK cppcheck)
                 if(CPPCHECK)
                         set(CMAKE_CXX_CPPCHECK
@@ -23,7 +25,7 @@ function(enable_static_analyzers)
                 endif()
         endif()
 
-        if(ENABLE_CLANG_TIDY)
+        if(${CPP_TMPL_ANALYZE_CLANG_TIDY})
                 find_program(CLANGTIDY clang-tidy)
                 if(CLANGTIDY)
                         set(CMAKE_CXX_CLANG_TIDY
@@ -36,7 +38,7 @@ function(enable_static_analyzers)
                 endif()
         endif()
 
-        if(ENABLE_INCLUDE_WHAT_YOU_USE)
+        if(${CPP_TMPL_COMPILE_IWYU})
                 find_program(INCLUDE_WHAT_YOU_USE include-what-you-use)
                 if(INCLUDE_WHAT_YOU_USE)
                         set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE

@@ -1,6 +1,6 @@
 function(enable_doxygen)
-        option(ENABLE_DOXYGEN "Enable doxygen doc builds of source" OFF)
-        if(ENABLE_DOXYGEN)
+        option(CPP_TMPL_DOCS_DOXYGEN "Enable doxygen doc builds of source" OFF)
+        if(${CPP_TMPL_DOCS_DOXYGEN})
                 set(DOXYGEN_CALLER_GRAPH YES)
                 set(DOXYGEN_CALL_GRAPH YES)
                 set(DOXYGEN_EXTRACT_ALL YES)

@@ -5,33 +5,35 @@ function(enable_sanitizers project_name)
                 return()
         endif()
 
-        option(ENABLE_COVERAGE "Enable coverage reporting for gcc/clang" FALSE)
-        option(ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" FALSE)
-        option(ENABLE_SANITIZER_LEAK "Enable leak sanitizer" FALSE)
-        option(ENABLE_SANITIZER_UB "Enable undefined behavior sanitizer" FALSE)
-        option(ENABLE_SANITIZER_THREAD "Enable thread sanitizer" FALSE)
-        option(ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" FALSE)
+        option(CPP_TMPL_ANALYZE_COVERAGE
+               "Enable coverage reporting for gcc/clang" FALSE)
+        option(CPP_TMPL_SANITIZER_ADDRESS "Enable address sanitizer" FALSE)
+        option(CPP_TMPL_SANITIZER_LEAK "Enable leak sanitizer" FALSE)
+        option(CPP_TMPL_SANITIZER_UB "Enable undefined behavior sanitizer"
+               FALSE)
+        option(CPP_TMPL_SANITIZER_THREAD "Enable thread sanitizer" FALSE)
+        option(CPP_TMPL_SANITIZER_MEMORY "Enable memory sanitizer" FALSE)
 
-        if(ENABLE_COVERAGE)
+        if(${CPP_TMPL_ANALYZE_COVERAGE})
                 target_compile_options(${project_name} INTERFACE --coverage -O0
                                                                  -g)
                 target_link_libraries(${project_name} INTERFACE --coverage)
         endif()
 
         set(SANITIZERS "")
-        if(ENABLE_SANITIZER_ADDRESS)
+        if(${CPP_TMPL_SANITIZER_ADDRESS})
                 list(APPEND SANITIZERS "address")
         endif()
 
-        if(ENABLE_SANITIZER_LEAK)
+        if(${CPP_TMPL_SANITIZER_LEAK})
                 list(APPEND SANITIZERS "leak")
         endif()
 
-        if(ENABLE_SANITIZER_UB)
+        if(${CPP_TMPL_SANITIZER_UB})
                 list(APPEND SANITIZERS "undefined")
         endif()
 
-        if(ENABLE_SANITIZER_THREAD)
+        if(${CPP_TMPL_SANITIZER_THREAD})
                 if("address" IN_LIST SANITIZERS OR "leak" IN_LIST SANITIZERS)
                         message(
                                 WARNING
@@ -42,7 +44,7 @@ function(enable_sanitizers project_name)
                 endif()
         endif()
 
-        if(ENABLE_SANITIZER_MEMORY AND CPP_PROJECT_TEMPLATE_USING_CLANG)
+        if(${CPP_TMPL_SANITIZER_MEMORY} AND CPP_PROJECT_TEMPLATE_USING_CLANG)
                 if("address" IN_LIST SANITIZERS
                    OR "thread" IN_LIST SANITIZERS
                    OR "leak" IN_LIST SANITIZERS)

@@ -1,10 +1,10 @@
 macro(enable_ipo)
         option(
-                ENABLE_IPO
+                CPP_TMPL_IPO
                 "Enable Interprocedural Optimization, aka Link Time Optimization (LTO)"
                 OFF)
 
-        if(ENABLE_IPO)
+        if(${CPP_TMPL_IPO})
                 include(CheckIPOSupported)
                 check_ipo_supported(RESULT result OUTPUT output)
                 if(result)

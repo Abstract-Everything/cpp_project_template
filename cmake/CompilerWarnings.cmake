@@ -3,7 +3,8 @@
 # https://github.com/lefticus/cppbestpractices/blob/master/02-Use_the_Tools_Available.md
 
 function(set_project_warnings project_name)
-        option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" TRUE)
+        option(CPP_TMPL_COMPILE_WARN_AS_ERR "Treat compiler warnings as errors"
+               TRUE)
 
         set(MSVC_WARNINGS
             /W4 # Baseline reasonable warnings
@@ -41,7 +42,7 @@ function(set_project_warnings project_name)
             /w14928 # illegal copy-initialization; more than one user-defined
                     # conversion has been implicitly applied
             /permissive- # standards conformance mode for MSVC compiler.
-            $<$<BOOL:${WARNINGS_AS_ERRORS}>:/WX>)
+            $<$<BOOL:${CPP_TMPL_COMPILE_WARN_AS_ERR}>:/WX>)
 
         set(CLANG_WARNINGS
             -Wall
@@ -58,7 +59,7 @@ function(set_project_warnings project_name)
             -Wnull-dereference
             -Wdouble-promotion
             -Wformat=2
-            $<$<BOOL:${WARNINGS_AS_ERRORS}>:-Werror>)
+            $<$<BOOL:${CPP_TMPL_COMPILE_WARN_AS_ERR}>:-Werror>)
 
         set(GCC_WARNINGS
             ${CLANG_WARNINGS}

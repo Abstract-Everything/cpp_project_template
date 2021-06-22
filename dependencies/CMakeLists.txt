@@ -19,7 +19,7 @@ include(${CMAKE_CURRENT_BINARY_DIR}/conan.cmake)
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
-if(CPP_STARTER_USE_IMGUI)
+if(${CPP_TMPL_GUI_IMGUI})
         set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
                                  imgui-sfml/2.1@bincrafters/stable)
 

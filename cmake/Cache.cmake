@@ -1,27 +1,27 @@
 function(enable_ccache)
-        set(CACHE_OPTION
+        set(CPP_TMPL_COMPILE_CACHE
             "ccache"
             CACHE STRING "Compiler cache to be used")
 
         set_property(
-                CACHE CACHE_OPTION
+                CACHE CPP_TMPL_COMPILE_CACHE
                 PROPERTY STRINGS
                          "off"
                          "ccache"
                          "sccache")
 
-        if(CACHE_OPTION STREQUAL "off")
+        if(${CPP_TMPL_COMPILE_CACHE} STREQUAL "off")
                 return()
         endif()
 
-        find_program(CACHE_BINARY ${CACHE_OPTION})
+        find_program(CACHE_BINARY ${CPP_TMPL_COMPILE_CACHE})
         if(NOT CACHE_BINARY)
                 message(
                         FATAL_ERROR
-                                "${CACHE_OPTION} is enabled but was not found")
+                                "${CPP_TMPL_COMPILE_CACHE} is enabled but was not found")
                 return()
         endif()
 
-        message(STATUS "${CACHE_OPTION} found and enabled")
+        message(STATUS "${CPP_TMPL_COMPILE_CACHE} found and enabled")
         set(CMAKE_CXX_COMPILER_LAUNCHER ${CACHE_BINARY})
 endfunction()

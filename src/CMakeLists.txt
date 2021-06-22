@@ -1,28 +1,28 @@
-option(CPP_STARTER_USE_QT "Enable compilation of QT sample" OFF)
-option(CPP_STARTER_USE_FLTK "Enable compilation of FLTK sample" OFF)
-option(CPP_STARTER_USE_GTKMM "Enable compilation of GTKMM sample" OFF)
-option(CPP_STARTER_USE_IMGUI "Enable compilation of ImGui sample" OFF)
+option(CPP_TMPL_GUI_QT "Enable compilation of QT sample" OFF)
+option(CPP_TMPL_GUI_FLTK "Enable compilation of FLTK sample" OFF)
+option(CPP_TMPL_GUI_GTKMM "Enable compilation of GTKMM sample" OFF)
+option(CPP_TMPL_GUI_IMGUI "Enable compilation of ImGui sample" OFF)
 
 # qt
-if(CPP_STARTER_USE_QT)
+if(${CPP_TMPL_GUI_QT})
         message("Using Qt")
         add_subdirectory(qt)
 endif()
 
 # fltk test
-if(CPP_STARTER_USE_FLTK)
+if(${CPP_TMPL_GUI_FLTK})
         message("Using FLTK")
         add_subdirectory(fltk)
 endif()
 
 # gtkmm test
-if(CPP_STARTER_USE_GTKMM)
+if(${CPP_TMPL_GUI_GTKMM})
         message("Using gtkmm")
         add_subdirectory(gtkmm)
 endif()
 
 # imgui example
-if(CPP_STARTER_USE_IMGUI)
+if(${CPP_TMPL_GUI_IMGUI})
         message("Using Dear ImGui")
         add_subdirectory(imgui)
 endif()

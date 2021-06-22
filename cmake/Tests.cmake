@@ -1,7 +1,7 @@
 macro(enable_tests)
-        option(ENABLE_TESTING "Enable Test Builds" OFF)
+        option(CPP_TMPL_TESTING "Enable Test Builds" OFF)
 
-        if(ENABLE_TESTING)
+        if(${CPP_TMPL_TESTING})
                 enable_testing()
         endif()
 

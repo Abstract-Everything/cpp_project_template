@@ -1,4 +1,4 @@
-if(NOT ENABLE_TESTING)
+if(NOT ${CPP_TMPL_TESTING})
         return()
 endif()
 
