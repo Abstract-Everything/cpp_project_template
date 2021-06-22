@@ -1,6 +1,6 @@
 function(enable_ccache)
         set(CPP_TMPL_COMPILE_CACHE
-            "ccache"
+            "off"
             CACHE STRING "Compiler cache to be used")
 
         set_property(
