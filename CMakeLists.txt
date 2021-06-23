@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
 project(
-        c_plus_plus_template_project
-        VERSION 0.0.0.1
-        DESCRIPTION "A template for C++ projects to get started quickly"
-        LANGUAGES CXX)
+	c_plus_plus_template_project
+	VERSION 0.0.0.1
+	DESCRIPTION "A template for C++ projects to get started quickly"
+	LANGUAGES CXX)
 
 include(cmake/Constants.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
@@ -22,7 +22,9 @@ include(cmake/UnityBuild.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
-target_compile_features(project_options INTERFACE cxx_std_17)
+target_compile_features(
+	project_options
+	INTERFACE cxx_std_17)
 enable_time_trace(project_options)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake

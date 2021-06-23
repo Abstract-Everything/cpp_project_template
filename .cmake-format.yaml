@@ -75,10 +75,14 @@ additional_commands:
                         OUTPUT_PREFIX: 1
                         OUTPUT_SUFFIX: 1
 
-line_width: 80
+line_width: 100
 tab_size: 8
-max_pargs_hwrap: 3
-separate_ctrl_name_with_space: false
-separate_fn_name_with_space: false
-dangle_parens: false
-line_ending: unix
+use_tabchars: true
+fractional_tab_policy: 'use-space'
+max_subgroups_hwrap: 1
+max_pargs_hwrap: 4
+keyword_case: upper
+autosort: true
+
+global_var_pattern: 'CPP_TMPL_[A-Z]*'
+max_statement_spacing: 1
