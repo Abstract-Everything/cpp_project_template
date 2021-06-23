@@ -84,5 +84,5 @@ max_pargs_hwrap: 4
 keyword_case: upper
 autosort: true
 
-global_var_pattern: 'CPP_TMPL_[A-Z]*'
-max_statement_spacing: 1
+global_var_pattern: '(CPP_TMPL_[A-Z]*|CMAKE_BUILD_TYPE)'
+max_statement_spacing: 2

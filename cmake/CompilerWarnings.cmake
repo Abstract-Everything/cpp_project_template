@@ -2,10 +2,11 @@
 #
 # https://github.com/lefticus/cppbestpractices/blob/master/02-Use_the_Tools_Available.md
 
-function(set_project_warnings project_name)
+# Sets a list of default compile warnings in the given project
+function(set_project_warnings project)
 	option(CPP_TMPL_COMPILE_WARN_AS_ERR "Treat compiler warnings as errors" TRUE)
 
-	set(MSVC_WARNINGS
+	set(warnings_msvc
 	    /W4 # Baseline reasonable warnings
 	    /w14242 # 'identifier': conversion from 'type1' to 'type1', possible
 	    # loss of data
@@ -41,7 +42,7 @@ function(set_project_warnings project_name)
 	    /permissive- # standards conformance mode for MSVC compiler.
 	    $<$<BOOL:${CPP_TMPL_COMPILE_WARN_AS_ERR}>:/WX>)
 
-	set(CLANG_WARNINGS
+	set(warnings_clang
 	    -Wall
 	    -Wextra
 	    -Wshadow
@@ -58,7 +59,7 @@ function(set_project_warnings project_name)
 	    -Wformat=2
 	    $<$<BOOL:${CPP_TMPL_COMPILE_WARN_AS_ERR}>:-Werror>)
 
-	set(GCC_WARNINGS
+	set(warnings_gcc
 	    ${CLANG_WARNINGS}
 	    -Wmisleading-indentation
 	    -Wduplicated-cond
@@ -76,8 +77,8 @@ function(set_project_warnings project_name)
 	endif()
 
 	target_compile_options(
-		${project_name}
-		INTERFACE $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_MSVC}>:${MSVC_WARNINGS}>
-			  $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_CLANG}>:${CLANG_WARNINGS}>
-			  $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_GCC}>:${GCC_WARNINGS}>)
+		${project}
+		INTERFACE $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_MSVC}>:${warnings_msvc}>
+			  $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_CLANG}>:${warnings_clang}>
+			  $<$<BOOL:${CPP_PROJECT_TEMPLATE_USING_GCC}>:${warnings_gcc}>)
 endfunction()

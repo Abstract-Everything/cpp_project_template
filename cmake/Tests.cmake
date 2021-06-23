@@ -1,4 +1,5 @@
-macro(enable_tests)
+# Setup options for the supported test frameworks
+macro(ENABLE_TESTS)
 	set(CPP_TMPL_TESTING
 	    "off"
 	    CACHE STRING "Testing framework to use")

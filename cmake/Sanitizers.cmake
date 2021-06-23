@@ -1,4 +1,5 @@
-function(enable_sanitizers project_name)
+# Enables the options for supported sanitizers and validates them
+function(enable_sanitizers project)
 
 	if(NOT
 	   (CPP_PROJECT_TEMPLATE_USING_CLANG
@@ -15,61 +16,61 @@ function(enable_sanitizers project_name)
 
 	if(${CPP_TMPL_ANALYZE_COVERAGE})
 		target_compile_options(
-			${project_name}
+			${project}
 			INTERFACE --coverage -O0 -g)
 		target_link_libraries(
-			${project_name}
+			${project}
 			INTERFACE --coverage)
 	endif()
 
-	set(SANITIZERS
+	set(sanitizers
 	    "")
 	if(${CPP_TMPL_SANITIZER_ADDRESS})
-		list(APPEND SANITIZERS "address")
+		list(APPEND sanitizers "address")
 	endif()
 
 	if(${CPP_TMPL_SANITIZER_LEAK})
-		list(APPEND SANITIZERS "leak")
+		list(APPEND sanitizers "leak")
 	endif()
 
 	if(${CPP_TMPL_SANITIZER_UB})
-		list(APPEND SANITIZERS "undefined")
+		list(APPEND sanitizers "undefined")
 	endif()
 
 	if(${CPP_TMPL_SANITIZER_THREAD})
-		if("address" IN_LIST SANITIZERS
-		   OR "leak" IN_LIST SANITIZERS)
+		if("address" IN_LIST sanitizers
+		   OR "leak" IN_LIST sanitizers)
 			message(
 				WARNING
 					"Thread sanitizer does not work with Address and Leak sanitizer enabled"
 			)
 		else()
-			list(APPEND SANITIZERS "thread")
+			list(APPEND sanitizers "thread")
 		endif()
 	endif()
 
 	if(${CPP_TMPL_SANITIZER_MEMORY}
 	   AND CPP_PROJECT_TEMPLATE_USING_CLANG)
-		if("address" IN_LIST SANITIZERS
-		   OR "thread" IN_LIST SANITIZERS
-		   OR "leak" IN_LIST SANITIZERS)
+		if("address" IN_LIST sanitizers
+		   OR "thread" IN_LIST sanitizers
+		   OR "leak" IN_LIST sanitizers)
 			message(
 				WARNING
 					"Memory sanitizer does not work with Address, Thread and Leak sanitizer enabled"
 			)
 		else()
-			list(APPEND SANITIZERS "memory")
+			list(APPEND sanitizers "memory")
 		endif()
 	endif()
 
-	list(JOIN SANITIZERS "," LIST_OF_SANITIZERS)
+	list(JOIN sanitizers "," list_of_sanitizers)
 
-	if(LIST_OF_SANITIZERS
-	   AND NOT ${LIST_OF_SANITIZERS} STREQUAL "")
+	if(list_of_sanitizers
+	   AND NOT ${list_of_sanitizers} STREQUAL "")
 		target_compile_options(
-			${project_name}
-			INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
-		target_link_options(${project_name} INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
+			${project}
+			INTERFACE -fsanitize=${LIST_OF_sanitizers})
+		target_link_options(${project} INTERFACE -fsanitize=${LIST_OF_sanitizers})
 	endif()
 
 endfunction()

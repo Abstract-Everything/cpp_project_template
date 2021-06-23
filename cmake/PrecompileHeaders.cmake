@@ -1,4 +1,6 @@
-function(enable_pch)
+# Enables precompiled headers. The function currently uses a specific set of headers. Different
+# projects might require different headers instead of what is given here.
+function(enable_pch project)
 	# Very basic PCH example
 	option(CPP_TMPL_COMPILE_PCH "Enable Precompiled Headers" OFF)
 	if(${CPP_TMPL_COMPILE_PCH})
@@ -7,7 +9,7 @@ function(enable_pch)
 		#
 		# consider breaking this out per project as necessary
 		target_precompile_headers(
-			project_options
+			${project}
 			INTERFACE
 			<vector>
 			<string>

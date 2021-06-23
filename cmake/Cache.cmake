@@ -1,3 +1,4 @@
+# Enables compilation with ccache or sccache
 function(enable_ccache)
 	set(CPP_TMPL_COMPILE_CACHE
 	    "off"
@@ -19,5 +20,6 @@ function(enable_ccache)
 
 	message(STATUS "${CPP_TMPL_COMPILE_CACHE} found and enabled")
 	set(CMAKE_CXX_COMPILER_LAUNCHER
-	    ${CACHE_BINARY})
+	    ${CACHE_BINARY}
+	    PARENT_SCOPE)
 endfunction()

@@ -32,7 +32,7 @@ add_library(project_warnings INTERFACE)
 set_project_warnings(project_warnings)
 
 enable_ipo()
-enable_pch()
+enable_pch(project_options)
 option(CPP_TMPL_BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 
 enable_doxygen()

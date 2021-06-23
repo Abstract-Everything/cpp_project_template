@@ -1,4 +1,5 @@
-macro(enable_ipo)
+# Enables Link time optimization setting
+macro(ENABLE_IPO)
 	option(CPP_TMPL_IPO "Enable Interprocedural Optimization, aka Link Time Optimization (LTO)"
 	       OFF)
 
