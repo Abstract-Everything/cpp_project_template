@@ -41,6 +41,8 @@ conan_cmake_autodetect(settings)
 conan_cmake_install(
 	PATH_OR_REFERENCE .
 	BUILD missing
+	# This is a workaround until https://github.com/conan-io/cmake-conan/pull/343 is merged
+	SETTINGS compiler.cppstd=${CPP_TMPL_STANDARD}
 	SETTINGS ${settings})
 
 set(CMAKE_MODULE_PATH

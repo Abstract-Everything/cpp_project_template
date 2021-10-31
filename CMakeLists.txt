@@ -22,9 +22,7 @@ include(cmake/UnityBuild.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
-target_compile_features(
-	project_options
-	INTERFACE cxx_std_17)
+set_standard(project_options)
 enable_time_trace(project_options)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake

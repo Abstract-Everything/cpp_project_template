@@ -30,3 +30,35 @@ else()
 		STATUS "No colored compiler diagnostic set for '${CMAKE_CXX_COMPILER_ID}' compiler."
 	)
 endif()
+
+set(CPP_TMPL_STANDARD
+    20
+    CACHE STRING "Choose the c++ standard.")
+
+set_property(
+	CACHE CPP_TMPL_STANDARD
+	PROPERTY STRINGS
+		 "11"
+		 "14"
+		 "17"
+		 "20")
+
+function(set_standard project)
+	if(${CPP_TMPL_STANDARD} STREQUAL "11")
+		set(CPP_PROJECT_TEMPLATE_STANDARD
+		    cxx_std_11)
+	elseif(${CPP_TMPL_STANDARD} STREQUAL "14")
+		set(CPP_PROJECT_TEMPLATE_STANDARD
+		    cxx_std_14)
+	elseif(${CPP_TMPL_STANDARD} STREQUAL "17")
+		set(CPP_PROJECT_TEMPLATE_STANDARD
+		    cxx_std_17)
+	elseif(${CPP_TMPL_STANDARD} STREQUAL "20")
+		set(CPP_PROJECT_TEMPLATE_STANDARD
+		    cxx_std_20)
+	endif()
+
+	target_compile_features(
+		${project}
+		INTERFACE ${CPP_PROJECT_TEMPLATE_STANDARD})
+endfunction()
