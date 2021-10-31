@@ -17,9 +17,9 @@ See [cppreference.com](https://en.cppreference.com/w/cpp/compiler_support)
 to see which features are supported by each compiler.
 The following compilers should work:
 
-  [gcc 7+](https://gcc.gnu.org/)
-  [clang 6+](https://clang.llvm.org/)
-  [Visual Studio 2019 or higher](https://visualstudio.microsoft.com/)
+    - [gcc 7+](https://gcc.gnu.org/)
+    - [clang 6+](https://clang.llvm.org/)
+    - [Visual Studio 2019 or higher](https://visualstudio.microsoft.com/)
 
 2. [Conan](https://conan.io/)
 
