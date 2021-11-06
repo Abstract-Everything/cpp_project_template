@@ -1,6 +1,5 @@
 # Set a default build type if none was specified
-if(NOT CMAKE_BUILD_TYPE
-   AND NOT CMAKE_CONFIGURATION_TYPES)
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	message(STATUS "Setting build type to 'RelWithDebInfo' as none was specified.")
 
 	set(CMAKE_BUILD_TYPE
@@ -18,8 +17,7 @@ if(NOT CMAKE_BUILD_TYPE
 endif()
 
 # Generate compile_commands.json to make it easier to work with clang based tools
-set(CMAKE_EXPORT_COMPILE_COMMANDS
-    ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(${CPP_PROJECT_TEMPLATE_USING_CLANG})
 	add_compile_options(-fcolor-diagnostics)
@@ -43,22 +41,17 @@ set_property(
 		 "17"
 		 "20")
 
+# Sets c++ target standard
 function(set_standard project)
 	if(${CPP_TMPL_STANDARD} STREQUAL "11")
-		set(CPP_PROJECT_TEMPLATE_STANDARD
-		    cxx_std_11)
+		set(standard cxx_std_11)
 	elseif(${CPP_TMPL_STANDARD} STREQUAL "14")
-		set(CPP_PROJECT_TEMPLATE_STANDARD
-		    cxx_std_14)
+		set(standard cxx_std_14)
 	elseif(${CPP_TMPL_STANDARD} STREQUAL "17")
-		set(CPP_PROJECT_TEMPLATE_STANDARD
-		    cxx_std_17)
+		set(standard cxx_std_17)
 	elseif(${CPP_TMPL_STANDARD} STREQUAL "20")
-		set(CPP_PROJECT_TEMPLATE_STANDARD
-		    cxx_std_20)
+		set(standard cxx_std_20)
 	endif()
 
-	target_compile_features(
-		${project}
-		INTERFACE ${CPP_PROJECT_TEMPLATE_STANDARD})
+	target_compile_features(${project} INTERFACE ${standard})
 endfunction()

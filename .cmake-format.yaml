@@ -79,7 +79,7 @@ line_width: 100
 tab_size: 8
 use_tabchars: true
 fractional_tab_policy: 'use-space'
-max_subgroups_hwrap: 1
+max_subgroups_hwrap: 2
 max_pargs_hwrap: 4
 keyword_case: upper
 autosort: true

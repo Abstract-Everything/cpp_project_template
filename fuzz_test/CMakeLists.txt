@@ -4,9 +4,7 @@ message("Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/
 
 find_package(fmt REQUIRED)
 
-add_executable(
-	fuzz_tester
-	fuzz_tester.cpp)
+add_executable(fuzz_tester fuzz_tester.cpp)
 
 target_link_libraries(
 	fuzz_tester
@@ -16,15 +14,11 @@ target_link_libraries(
 		-coverage
 		-fsanitize=fuzzer,undefined,address)
 
-target_compile_options(
-	fuzz_tester
-	PRIVATE -fsanitize=fuzzer,undefined,address)
+target_compile_options(fuzz_tester PRIVATE -fsanitize=fuzzer,undefined,address)
 
 # Allow short runs during automated testing to see if something new breaks
 set(CPP_TMPL_TESTING_FUZZ_RUNTIME
     10
     CACHE STRING "Number of seconds to run fuzz tests during ctest run") # Default of 10 seconds
 
-add_test(
-	NAME fuzz
-	COMMAND fuzz_tester -max_total_time=${CPP_TMPL_TESTING_FUZZ_RUNTIME})
+add_test(NAME fuzz COMMAND fuzz_tester -max_total_time=${CPP_TMPL_TESTING_FUZZ_RUNTIME})

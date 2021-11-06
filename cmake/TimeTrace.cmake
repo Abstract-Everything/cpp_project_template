@@ -8,8 +8,6 @@ function(enable_time_trace project)
 	       "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
 
 	if(${CPP_TMPL_TIME_TRACE})
-		target_compile_options(
-			${project}
-			INTERFACE -ftime-trace)
+		target_compile_options(${project} INTERFACE -ftime-trace)
 	endif()
 endfunction()

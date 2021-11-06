@@ -4,9 +4,7 @@ function(enable_ccache)
 	    "off"
 	    CACHE STRING "Compiler cache to be used")
 
-	set_property(
-		CACHE CPP_TMPL_COMPILE_CACHE
-		PROPERTY STRINGS "off" "ccache" "sccache")
+	set_property(CACHE CPP_TMPL_COMPILE_CACHE PROPERTY STRINGS "off" "ccache" "sccache")
 
 	if(${CPP_TMPL_COMPILE_CACHE} STREQUAL "off")
 		return()
