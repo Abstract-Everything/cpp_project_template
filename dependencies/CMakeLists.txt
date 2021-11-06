@@ -15,8 +15,24 @@ include(${CMAKE_CURRENT_BINARY_DIR}/conan.cmake)
 # Set up some extra Conan dependencies based on our needs before loading Conan
 set(CONAN_EXTRA_REQUIRES
     "")
+
 set(CONAN_EXTRA_OPTIONS
     "")
+
+if(${CPP_TMPL_TESTING} STREQUAL "catch2")
+	set(CONAN_EXTRA_REQUIRES
+	    ${CONAN_EXTRA_REQUIRES} catch2/2.13.3)
+endif()
+
+if(${CPP_TMPL_TESTING} STREQUAL "gtest")
+	set(CONAN_EXTRA_REQUIRES
+	    ${CONAN_EXTRA_REQUIRES} gtest/1.11.0)
+endif()
+
+if(${CPP_TMPL_DOCS_DOXYGEN})
+	set(CONAN_EXTRA_REQUIRES
+	    ${CONAN_EXTRA_REQUIRES} docopt.cpp/0.6.2)
+endif()
 
 if(${CPP_TMPL_GUI_IMGUI})
 	set(CONAN_EXTRA_REQUIRES
@@ -28,9 +44,6 @@ endif()
 
 conan_cmake_configure(
 	REQUIRES ${CONAN_EXTRA_REQUIRES}
-		 gtest/1.11.0
-		 catch2/2.13.3
-		 docopt.cpp/0.6.2
 		 fmt/6.2.0
 		 spdlog/1.5.0
 	OPTIONS ${CONAN_EXTRA_OPTIONS}

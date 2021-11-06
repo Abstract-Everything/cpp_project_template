@@ -28,7 +28,6 @@ if(${CPP_TMPL_GUI_IMGUI})
 endif()
 
 find_package(fmt REQUIRED)
-find_package(docopt REQUIRED)
 find_package(spdlog REQUIRED)
 
 # Generic test that uses conan libs
@@ -40,6 +39,5 @@ target_link_libraries(
 	intro
 	PRIVATE project_options
 		project_warnings
-		docopt::docopt
 		fmt::fmt
 		spdlog::spdlog)
