@@ -43,6 +43,15 @@ enable_tests()
 add_subdirectory(dependencies)
 add_subdirectory(lib)
 add_subdirectory(src)
-add_subdirectory(catch2_test)
-add_subdirectory(gtest_test)
-add_subdirectory(fuzz_test)
+
+if(${CPP_TMPL_TESTING} STREQUAL "catch2")
+	add_subdirectory(catch2_test)
+endif()
+
+if(${CPP_TMPL_TESTING} STREQUAL "gtest")
+	add_subdirectory(gtest_test)
+endif()
+
+if(${CPP_TMPL_TESTING_FUZZING})
+	add_subdirectory(fuzz_test)
+endif()

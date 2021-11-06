@@ -8,11 +8,11 @@ macro(ENABLE_TESTS)
 		CACHE CPP_TMPL_TESTING
 		PROPERTY STRINGS "off" "gtest" "catch2")
 
-	if(NOT ${CPP_TMPL_TESTING} STREQUAL "off")
-		enable_testing()
-	endif()
-
 	if(${CPP_PROJECT_TEMPLATE_USING_CLANG})
 		option(CPP_TMPL_TESTING_FUZZING "Enable Fuzzing Builds" OFF)
+	endif()
+
+	if(CPP_TMPL_TESTING_FUZZING OR NOT ${CPP_TMPL_TESTING} STREQUAL "off")
+		enable_testing()
 	endif()
 endmacro()

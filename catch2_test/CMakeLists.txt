@@ -1,7 +1,3 @@
-if(NOT ${CPP_TMPL_TESTING} STREQUAL "catch2")
-	return()
-endif()
-
 message("Building Tests. Be sure to check out test/constexpr_tests for constexpr testing")
 
 find_package(Catch2 REQUIRED)

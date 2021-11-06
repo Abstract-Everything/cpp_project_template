@@ -1,7 +1,3 @@
-if(NOT CPP_TMPL_TESTING_FUZZING)
-	return()
-endif()
-
 # A fuzz test runs until it finds an error. This particular one is going to rely on libFuzzer.
 #
 message("Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html")
@@ -11,6 +7,7 @@ find_package(fmt REQUIRED)
 add_executable(
 	fuzz_tester
 	fuzz_tester.cpp)
+
 target_link_libraries(
 	fuzz_tester
 	PRIVATE project_options
@@ -18,6 +15,7 @@ target_link_libraries(
 		fmt::fmt
 		-coverage
 		-fsanitize=fuzzer,undefined,address)
+
 target_compile_options(
 	fuzz_tester
 	PRIVATE -fsanitize=fuzzer,undefined,address)
@@ -28,5 +26,5 @@ set(CPP_TMPL_TESTING_FUZZ_RUNTIME
     CACHE STRING "Number of seconds to run fuzz tests during ctest run") # Default of 10 seconds
 
 add_test(
-	NAME fuzz_tester_run
+	NAME fuzz
 	COMMAND fuzz_tester -max_total_time=${CPP_TMPL_TESTING_FUZZ_RUNTIME})
