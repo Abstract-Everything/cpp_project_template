@@ -13,6 +13,6 @@ macro(ENABLE_TESTS)
 	endif()
 
 	if(${CPP_PROJECT_TEMPLATE_USING_CLANG})
-		option(ENABLE_FUZZING "Enable Fuzzing Builds" OFF)
+		option(CPP_TMPL_TESTING_FUZZING "Enable Fuzzing Builds" OFF)
 	endif()
 endmacro()

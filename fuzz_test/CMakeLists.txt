@@ -1,4 +1,4 @@
-if(NOT ENABLE_FUZZING)
+if(NOT CPP_TMPL_TESTING_FUZZING)
 	return()
 endif()
 
