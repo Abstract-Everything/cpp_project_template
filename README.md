@@ -7,7 +7,7 @@
 ### Usage
 First, create a repository from this github template by using the `Use this template` button. Fill in the necessary details and clone.
 After cloning the repository remove any unneeded frameworks using `git rm`:
-	$ git rm -r ./path/to/framework
+	`$ git rm -r ./path/to/framework`
 
 ## Dependencies
 
@@ -34,12 +34,9 @@ The following compilers should work:
   * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 
 #### Testing
-See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md)
-See [Google Test](https://google.github.io/googletest/primer.html#simple-tests)
-
-#### Fuzz testing
-
-See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
+- See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md)
+- See [Google Test](https://google.github.io/googletest/primer.html#simple-tests)
+- See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
 
 #### GUI libraries
 This project can be made to work with several optional GUI frameworks.
