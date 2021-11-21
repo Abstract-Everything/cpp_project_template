@@ -146,7 +146,7 @@ PenaltyBreakString: 0
 PenaltyBreakTemplateDeclaration: 0
 PenaltyExcessCharacter: 8
 PenaltyIndentedWhitespace: 0
-PenaltyReturnTypeOnItsOwnLine: 0
+PenaltyReturnTypeOnItsOwnLine: 999
 
 # Miscellaneous
 DerivePointerAlignment: false
