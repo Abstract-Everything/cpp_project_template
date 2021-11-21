@@ -110,16 +110,26 @@ StatementAttributeLikeMacros: []
 
 # Includes
 IncludeBlocks: Regroup
+
+# Orders as follows:
+# Priority 1: "project_include.hpp"
+# Priority 2: <depenedency_header.hpp>
+# Priority 3: <dependency/depenedency_header.hpp>
+# Priority 4: <stdheader>
+# Priority 5: <test_include>
 IncludeCategories: 
-  - Regex: '<[[:alnum:].]+>'
-    Priority: 2
-    SortPriority: 2
   - Regex: '<(gtest|gmock|catch).+>'
+    Priority: 5
+    SortPriority: 5
+  - Regex: '<[[:alnum:]]+>'
     Priority: 4
     SortPriority: 4
   - Regex: '<.*/.*>'
     Priority: 3
     SortPriority: 3
+  - Regex: '<[[:alnum:].]+>'
+    Priority: 2
+    SortPriority: 2
   - Regex: '".*"'
     Priority: 1
     SortPriority: 1
