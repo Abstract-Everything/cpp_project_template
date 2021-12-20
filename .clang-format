@@ -121,7 +121,7 @@ IncludeCategories:
   - Regex: '<(gtest|gmock|catch).+>'
     Priority: 5
     SortPriority: 5
-  - Regex: '<[[:alnum:]]+>'
+  - Regex: '<[[:alnum:]_]+>'
     Priority: 4
     SortPriority: 4
   - Regex: '<.*/.*>'
