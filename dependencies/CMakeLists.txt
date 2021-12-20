@@ -36,6 +36,12 @@ if(${CPP_TMPL_GUI_IMGUI})
 	# sfml:audio=False sfml:window=True libalsa:disable_python=True)
 endif()
 
+# conan_add_remote(
+# 	NAME bincrafters
+# 	INDEX 1
+# 	URL https://bincrafters.jfrog.io/artifactory/api/conan/public-conan
+# 	VERIFY_SSL True)
+
 conan_cmake_configure(
 	REQUIRES ${CONAN_EXTRA_REQUIRES} fmt/6.2.0 spdlog/1.5.0
 	OPTIONS ${CONAN_EXTRA_OPTIONS}
