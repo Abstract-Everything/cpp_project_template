@@ -6,16 +6,15 @@
 
 class HelloWorld : public Gtk::Window
 {
+ public:
+	HelloWorld();
 
-public:
-  HelloWorld();
+ protected:
+	// Signal handlers:
+	void on_button_clicked();
 
-protected:
-  //Signal handlers:
-  void on_button_clicked();
-
-  //Member widgets:
-  Gtk::Button m_button;
+	// Member widgets:
+	Gtk::Button m_button;
 };
 
-#endif// GTKMM_EXAMPLE_HELLO_WORLD_HPP
+#endif // GTKMM_EXAMPLE_HELLO_WORLD_HPP

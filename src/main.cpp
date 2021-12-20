@@ -1,7 +1,7 @@
+#include <spdlog/spdlog.h>
+
 #include <functional>
 #include <iostream>
-
-#include <spdlog/spdlog.h>
 
 static constexpr auto USAGE =
     R"(Naval Fate.
