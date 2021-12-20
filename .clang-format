@@ -115,15 +115,19 @@ IncludeBlocks: Regroup
 # Priority 1: "project_include.hpp"
 # Priority 2: <depenedency_header.hpp>
 # Priority 3: <dependency/depenedency_header.hpp>
-# Priority 4: <stdheader>
-# Priority 5: <test_include>
+# Priority 4: <QtHeader>
+# Priority 5: <stdheader>
+# Priority 6: <test_include>
 IncludeCategories: 
   - Regex: '<(gtest|gmock|catch).+>'
-    Priority: 5
-    SortPriority: 5
-  - Regex: '<[[:alnum:]_]+>'
+    Priority: 6
+    SortPriority: 6
+  - Regex: '<Q[[:alnum:]]+>'
     Priority: 4
     SortPriority: 4
+  - Regex: '<[[:alnum:]_]+>'
+    Priority: 5
+    SortPriority: 5
   - Regex: '<.*/.*>'
     Priority: 3
     SortPriority: 3
