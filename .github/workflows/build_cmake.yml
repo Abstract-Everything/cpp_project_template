@@ -63,7 +63,10 @@ jobs:
       shell: bash
       run: |
         python3 -m pip install --upgrade pip setuptools
-        python3 -m pip install conan
+        python3 -m pip install --upgrade conan
+        conan config set general.revisions_enabled=1
+        # Without this clear reruns on different machines sometimes fail
+        conan remove --system-reqs '*'
 
     - name: Configure CMake
       shell: bash
